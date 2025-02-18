@@ -1,7 +1,6 @@
 <template>
   <div>
     <h1>Projects</h1>
-    <RouterLink to="/">go to home</RouterLink>
     <DataTable v-if="projects" :data="projects" :columns="columns" />
   </div>
 </template>
@@ -19,12 +18,14 @@ const projects = ref<Tables<'projects'>[] | null>()
 // we want to call the API as soon as possile, so when page is loaded there is a hook cicle
 // for that page or component, the first thing that is called is the setup function
 // auto called function. This is a way to fetch data from the server as soon as posible
-;(async () => {
+const getProjects = async () => {
   const { data, error } = await supabase.from('projects').select()
   if (error) console.error(error)
 
   projects.value = data
-})()
+}
+
+await getProjects()
 
 const columns: ColumnDef<Tables<'projects'>>[] = [
   {

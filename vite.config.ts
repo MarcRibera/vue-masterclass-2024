@@ -1,6 +1,7 @@
 import { fileURLToPath, URL } from 'node:url'
 import VueRouter from 'unplugin-vue-router/vite'
 import AutoImport from 'unplugin-auto-import/vite'
+import { VueRouterAutoImports } from 'unplugin-vue-router'
 
 import autoprefixer from 'autoprefixer'
 import tailwind from 'tailwindcss'
@@ -25,7 +26,7 @@ export default defineConfig({
       imports: [
         // this are presets for common packages
         'vue',
-        'vue-router',
+        VueRouterAutoImports,
         // we are able to define the custom imports for some packages, chech documentation
       ],
       // Define a file where to store all the auto-imports

@@ -11,13 +11,14 @@ const tasks = ref<Tables<'tasks'>[] | null>()
 // we want to call the API as soon as possile, so when page is loaded there is a hook cicle
 // for that page or component, the first thing that is called is the setup function
 // auto called function. This is a way to fetch data from the server as soon as posible
-;(async () => {
+const getTasks = async () => {
   const { data, error } = await supabase.from('tasks').select()
   if (error) console.error(error)
 
   tasks.value = data
-})()
+}
 
+await getTasks()
 // ---------------------
 
 const columns: ColumnDef<Tables<'tasks'>>[] = [
@@ -69,13 +70,6 @@ const columns: ColumnDef<Tables<'tasks'>>[] = [
 <template>
   <div>
     <h1>Tasks</h1>
-    <RouterLink to="/projects">go to projects</RouterLink>
-
-    <ul>
-      <li v-for="task in tasks" :key="task.id">
-        {{ task.name }}, in project -> {{ task.project_id }}
-      </li>
-    </ul>
 
     <DataTable v-if="tasks" :columns="columns" :data="tasks" />
   </div>

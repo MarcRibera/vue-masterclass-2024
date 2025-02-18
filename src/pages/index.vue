@@ -1,9 +1,9 @@
-<template>
-  <div>
-    <h1>Home page</h1>
-  </div>
-</template>
+<script setup lang="ts">
+usePageStore().pageData.title = 'Dashboard'
+</script>
 
-<script setup lang="ts"></script>
+<template>
+  <div></div>
+</template>
 
 <style scoped></style>

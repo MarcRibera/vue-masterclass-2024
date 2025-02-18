@@ -28,6 +28,9 @@ export default defineConfig({
         'vue',
         VueRouterAutoImports,
         // we are able to define the custom imports for some packages, chech documentation
+        {
+          pinia: ['defineStore', 'storeToRefs', 'acceptHMRUpdate'],
+        },
       ],
       // Define a file where to store all the auto-imports
       // Filepath to generate corresponding .d.ts file.
@@ -36,6 +39,7 @@ export default defineConfig({
       // Include auto-imported packages in Vite's `optimizeDeps` options
       // Recommend to enable
       viteOptimizeDeps: true,
+      dirs: ['src/stores'],
     }),
     vue({
       template: {

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Projects</h1>
     <DataTable v-if="projects" :data="projects" :columns="columns" />
   </div>
 </template>
@@ -12,6 +11,8 @@ import type { Tables } from '../../../database/types'
 
 import DataTable from '@/components/ui/data-table/DataTable.vue'
 import type { ColumnDef } from '@tanstack/vue-table'
+
+usePageStore().pageData.title = 'Projects'
 
 const projects = ref<Tables<'projects'>[] | null>()
 

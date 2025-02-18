@@ -6,6 +6,8 @@ import DataTable from '@/components/ui/data-table/DataTable.vue'
 import type { ColumnDef } from '@tanstack/vue-table'
 import { RouterLink } from 'vue-router'
 
+usePageStore().pageData.title = 'Tasks'
+
 const tasks = ref<Tables<'tasks'>[] | null>()
 
 // we want to call the API as soon as possile, so when page is loaded there is a hook cicle
@@ -69,8 +71,6 @@ const columns: ColumnDef<Tables<'tasks'>>[] = [
 
 <template>
   <div>
-    <h1>Tasks</h1>
-
     <DataTable v-if="tasks" :columns="columns" :data="tasks" />
   </div>
 </template>

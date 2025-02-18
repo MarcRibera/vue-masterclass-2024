@@ -1,5 +1,6 @@
 import { fileURLToPath, URL } from 'node:url'
 import VueRouter from 'unplugin-vue-router/vite'
+import AutoImport from 'unplugin-auto-import/vite'
 
 import autoprefixer from 'autoprefixer'
 import tailwind from 'tailwindcss'
@@ -12,6 +13,29 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 export default defineConfig({
   plugins: [
     VueRouter(),
+    AutoImport({
+      // define in wich files auto-import should work
+      include: [
+        /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+        /\.vue$/,
+        /\.vue\?vue/, // .vue
+        /\.md$/, // .md
+      ],
+      // define wich packages should be auto-imported
+      imports: [
+        // this are presets for common packages
+        'vue',
+        'vue-router',
+        // we are able to define the custom imports for some packages, chech documentation
+      ],
+      // Define a file where to store all the auto-imports
+      // Filepath to generate corresponding .d.ts file.
+      // Defaults to './auto-imports.d.ts' when `typescript` is installed locally.
+      dts: true,
+      // Include auto-imported packages in Vite's `optimizeDeps` options
+      // Recommend to enable
+      viteOptimizeDeps: true,
+    }),
     vue({
       template: {
         compilerOptions: {

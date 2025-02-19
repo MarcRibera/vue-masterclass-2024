@@ -8,6 +8,7 @@ import TableCell from '@/components/ui/table/TableCell.vue'
 import TableHead from '@/components/ui/table/TableHead.vue'
 import TableHeader from '@/components/ui/table/TableHeader.vue'
 import TableRow from '@/components/ui/table/TableRow.vue'
+
 import { projectQuery } from '@/utils/supaQueries'
 import type { Project } from '@/utils/supaQueries'
 

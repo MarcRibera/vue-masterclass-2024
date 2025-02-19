@@ -20,8 +20,6 @@ const getTasks = async () => {
 }
 
 await getTasks()
-
-useErrorStore().setError({ error: new Error('I am a very bad error') })
 </script>
 
 <template>

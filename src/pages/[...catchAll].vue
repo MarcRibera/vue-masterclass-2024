@@ -1,10 +1,9 @@
+<script setup lang="ts">
+import { useErrorStore } from '@/stores/error'
+
+useErrorStore().setError({ error: 'Page not found', customCode: 404 })
+</script>
+
 <template>
-  <div>
-    <h1>NOT FOUND</h1>
-    <RouterLink to="/">go to home</RouterLink>
-  </div>
+  <AppErrorPage />
 </template>
-
-<script setup lang="ts"></script>
-
-<style scoped></style>

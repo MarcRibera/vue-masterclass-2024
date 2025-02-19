@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useErrorStore } from '@/stores/error'
 import { projectQuery } from '@/utils/supaQueries'
 import type { Project } from '@/utils/supaQueries'
 
@@ -15,8 +16,10 @@ watch(
 const slug = (route.params as { slug: string }).slug
 
 const getProject = async () => {
-  const { data, error } = await projectQuery(slug)
-  if (error) console.error(error)
+  const { data, error, status } = await projectQuery(slug)
+
+  // set error store with db error data
+  if (error) useErrorStore().setError({ error, customCode: status })
   project.value = data
 }
 

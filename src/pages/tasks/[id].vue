@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useErrorStore } from '@/stores/error'
 import { tasksQuery } from '@/utils/supaQueries'
 import type { Task } from '@/utils/supaQueries'
 
@@ -14,8 +15,9 @@ watch(
 )
 
 const getTask = async () => {
-  const { data, error } = await tasksQuery(id)
-  if (error) console.error(error)
+  const { data, error, status } = await tasksQuery(id)
+  // set error store with db error data
+  if (error) useErrorStore().setError({ error, customCode: status })
   task.value = data || null
 }
 await getTask()

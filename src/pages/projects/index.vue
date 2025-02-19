@@ -2,6 +2,7 @@
 import { projectsQuery } from '@/utils/supaQueries'
 import { projectColumns } from '@/utils/tableColumns/projectColumns'
 import type { Projects } from '@/utils/supaQueries'
+import { useErrorStore } from '@/stores/error'
 
 usePageStore().pageData.title = 'Projects'
 
@@ -11,8 +12,9 @@ const projects = ref<Projects | null>()
 // for that page or component, the first thing that is called is the setup function
 // auto called function. This is a way to fetch data from the server as soon as posible
 const getProjects = async () => {
-  const { data, error } = await projectsQuery
-  if (error) console.error(error)
+  const { data, error, status } = await projectsQuery
+  // set error store with db error data
+  if (error) useErrorStore().setError({ error, customCode: status })
 
   projects.value = data
 }

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import DataTable from '@/components/ui/data-table/DataTable.vue'
 import { tasksWithProjectsQuery } from '@/utils/supaQueries'
 import { taskColumns } from '@/utils/tableColumns/taskColumn'
 

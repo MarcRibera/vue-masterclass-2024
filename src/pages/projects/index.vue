@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import DataTable from '@/components/ui/data-table/DataTable.vue'
 import { projectsQuery } from '@/utils/supaQueries'
 import { projectColumns } from '@/utils/tableColumns/projectColumns'
-
 import type { Projects } from '@/utils/supaQueries'
 
 usePageStore().pageData.title = 'Projects'

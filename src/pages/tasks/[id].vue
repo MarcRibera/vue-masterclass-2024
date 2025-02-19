@@ -1,12 +1,4 @@
 <script setup lang="ts">
-import Avatar from '@/components/ui/avatar/Avatar.vue'
-import AvatarFallback from '@/components/ui/avatar/AvatarFallback.vue'
-import AvatarImage from '@/components/ui/avatar/AvatarImage.vue'
-import Table from '@/components/ui/table/Table.vue'
-import TableCell from '@/components/ui/table/TableCell.vue'
-import TableHead from '@/components/ui/table/TableHead.vue'
-import TableRow from '@/components/ui/table/TableRow.vue'
-
 import { tasksQuery } from '@/utils/supaQueries'
 import type { Task } from '@/utils/supaQueries'
 
